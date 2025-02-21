@@ -20,6 +20,7 @@ register_button = "//*[@id='register-form']/button"
 add_to_cart_button = "//*[@id='ticket-form']/button"
 cart_nav_button = "id=cart-nav"
 proceed_to_checkout_button = "id=checkout-button"
+remove_button = "css=button[onclick^='removeFromCart']"
 
 safari_cart_button = "//*[@id='safari-form']/button"
 
@@ -71,3 +72,6 @@ alert_cart_message = "Item added to cart!"
 
 safari_weekend_denied_message = "VIP tickets required to book safaris on weekends."
 safari_vip_booking_denied_message = "Only VIP users can book the selected safari option."
+
+denied_buying_ticket_message = "You must be logged in to purchase tickets."
+empty_cart_message = "Your cart is empty."

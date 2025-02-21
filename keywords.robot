@@ -125,8 +125,8 @@ Select Ticket Category
 
 Select Ticket Quantity
     [Tags]    Martin
-    [Arguments]    ${two_ticket_quantity}
-    Input Text    id=ticket-quantity    ${two_ticket_quantity}
+    [Arguments]    ${ticket_quantity}
+    Input Text    id=ticket-quantity    ${ticket_quantity}
 
 The Cart Should Be Updated
     [Tags]    Martin
@@ -213,3 +213,55 @@ I Have Logged In And Booked The Regular Tickets
     I Have Logged In With Valid Credentials
     I Navigate To The Buy Tickets Page
     I Added Two Regular Adult Tickets To Cart
+
+I am On The Buy Tickets Page Without logging In
+    [Tags]    Martin
+    I Navigate To The Buy Tickets Page
+
+I Try To Add A Ticket To The Cart
+    [Tags]    Martin
+    Wait Until Element Is Visible    ${add_to_cart_button}
+    Click Button    ${add_to_cart_button}
+
+I Should See A Login Required Message
+    [Tags]    Martin
+    Alert Should Be Present    ${denied_buying_ticket_message}    ACCEPT
+
+I Have Navigated To Buy Tickets Page When Logged In
+    [Tags]    Martin
+    I Have Logged In With Valid Credentials
+    I Navigate To The Buy Tickets Page
+
+I Have Added A Ticket To The Cart
+    [Tags]    Martin
+    Select Ticket Type    ${adult_ticket_type}
+    Select Ticket Category    ${regular_ticket_category}
+    Select Ticket Quantity    1
+    Click Button    ${add_to_cart_button}
+    Alert Should Be Present    ${alert_cart_message}    ACCEPT
+
+I Remove The Ticket From The Cart
+    [Tags]    Martin
+    Navigate To Cart Page
+    Click Button    ${remove_button}
+
+The Cart Should Be Empty
+    [Tags]    Martin
+    ${cart_text}    Get Text    css=#cart-details
+    Should Contain    ${cart_text}    ${empty_cart_message}
+
+I Set Ticket Quantity To
+    [Tags]    Martin
+    [Arguments]    ${quantity}
+    Input Text    id=ticket-quantity    ${quantity}
+
+I Try To Add To Cart
+    [Tags]    Martin
+    Click Button    ${add_to_cart_button}
+
+I Should See An Error Message Indicating Valid Quantity
+    [Tags]    Martin
+    Wait Until Element Is Visible    id=ticket-quantity-error
+    ${error_message}    Get Text    id=ticket-quantity-error
+    Should Contain    ${error_message}    Värdet måste vara större än eller lika med 1.
+    Sleep    3s
