@@ -1,28 +1,28 @@
-User Story:
-Som system så vill jag endast att inloggade användare skall kunna köpa biljett
-
-Feature: 
+Feature:  
 Inloggade användare kan köpa entrébiljetter till parken.
 
+User Story:  
+Som system så vill jag att endast inloggade användare skall kunna köpa biljett.  
+Som användare så vill jag kunna ta bort tillagd biljett från varukorgen.
+
 Acceptanskriterier:
-- Användare skall vara inloggad.
+- Användare skall vara inloggad för att kunna köpa biljett
 - Användare skall kunna lägga till biljett till varukorgen.
 - Användare skall kunna ta bort tillagd biljett från varukorgen.
 - Användare skall inte kunna lägga till negativt antal biljetter.
-- Användare måste ha lagt till minst en entrebiljett för att kunna gå till checkout.
-- ev. Totala beloppet skall justeras till rätt belopp efter att en biljett tas bort.
+- Användare måste ha lagt till minst en entrebiljett för att kunna gå till checkout.  
 
 Testfall 1: Köp nekas utan inloggning: Man skall inte kunna köpa biljett om man inte är inloggad.  
-Testfall 2: Ta bort vara: Man skall kunna radera varor från varukorgen.  
+Testfall 2: Ta bort vara: Användare skall kunna radera varor från varukorgen.  
 Testfall 3: Negativt antal: Man skall inte kunna lägga till negativt antal biljetter.  
-Testfall 4: Minsta antal varor: Man måste ha minst en entrebiljett för att kunna gå till checkout.  
-ev testfall 5: Justering Belopp: Beloppet skall justeras när en vara tas bort från vaurkorgen.  
+ 
+---
 
-User Story:
-
-
-Feature:
+Feature:  
 Det finns biljetter av typerna ”Adult”, ”Child” och ”Senior” samt VIP-biljetter för dubbelt pris.
+
+User Story:  
+
 
 Acceptanskriterier:
 - Användare skall kunna välja Adult biljett.

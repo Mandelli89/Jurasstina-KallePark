@@ -2,7 +2,9 @@
 
 *** Settings ***
 Library    SeleniumLibrary
+Library    Price_Extractor.py
 Variables    variables.py
+
 
 *** Keywords ***
 
@@ -142,7 +144,7 @@ Navigate To Cart Page
 Verify Cart Quantity
     [Tags]    Martin
     [Arguments]    ${expected_ticket_quantity}
-    ${cart_text}    Get Text    css=#cart-details
+    ${cart_text}    Get Text    ${cart_details}
     Should Contain    ${cart_text}    ${expected_ticket_quantity}
 
 I Can Proceed To Checkout
@@ -252,18 +254,63 @@ The Cart Should Be Empty
     ${cart_text}    Get Text    css=#cart-details
     Should Contain    ${cart_text}    ${empty_cart_message}
 
-I Set Ticket Quantity To
+I Add 1 Regular Adult Ticket To The Cart
     [Tags]    Martin
-    [Arguments]    ${quantity}
-    Input Text    id=ticket-quantity    ${quantity}
+    I Have Added A Ticket To The Cart
 
-I Try To Add To Cart
+I Add 1 VIP Adult Ticket To The Cart
     [Tags]    Martin
+    Select Ticket Type    ${adult_ticket_type}
+    Select Ticket Category    ${vip_ticket_category}
+    Select Ticket Quantity    1
     Click Button    ${add_to_cart_button}
+    Alert Should Be Present    ${alert_cart_message}    ACCEPT
 
-I Should See An Error Message Indicating Valid Quantity
+The Price Of The VIP Ticket Should Be Double The Regular Ticket Price
     [Tags]    Martin
-    Wait Until Element Is Visible    id=ticket-quantity-error
-    ${error_message}    Get Text    id=ticket-quantity-error
-    Should Contain    ${error_message}    Värdet måste vara större än eller lika med 1.
-    Sleep    3s
+    Navigate To Cart Page
+    ${regular_text}    Get Text    css=#cart-details li:nth-of-type(1)
+    ${vip_text}    Get Text    css=#cart-details li:nth-of-type(2)
+    ${price_extractor}    Evaluate    PriceExtractor()
+    ${regular_price}    Evaluate    ${price_extractor}.extract_price_regex(${regular_text})
+    ${vip_price}    Evaluate    ${price_extractor}.extract_price_regex(${vip_text})
+    Should Be Equal As Numbers    ${vip_price}    ${regular_price} * 2
+
+I add One Regular "${ticket_type}" Ticket to the cart
+    [Tags]    Martin
+    Select Ticket Type    ${ticket_type}
+    Select Ticket Category    ${regular_ticket_category}
+    Select Ticket Quantity    1
+    Click Button    ${add_to_cart_button}
+    Alert Should Be Present    ${alert_cart_message}    ACCEPT
+
+I add One VIP "${ticket_type}" Ticket to the cart
+    [Tags]    Martin
+    Select Ticket Type    ${ticket_type}
+    Log    ${ticket_type}
+    Select Ticket Category    ${vip_ticket_category}
+    Select Ticket Quantity    1
+    Click Button    ${add_to_cart_button}
+    Alert Should Be Present    ${alert_cart_message}    ACCEPT
+
+I should see One ${ticket_type} Ticket in the cart
+    [Tags]    Martin
+    Navigate To Cart Page
+    ${cart_text}    Get Text    ${cart_details}
+    Log    Cart text: ${cart_text}
+    Should Contain    ${cart_text}    1 ${ticket_type} Ticket(s)
+
+#I Set Ticket Quantity To
+#    [Tags]    Martin
+#    [Arguments]    ${quantity}
+#    Input Text    id=ticket-quantity    ${quantity}
+
+#I Try To Add To Cart
+#    [Tags]    Martin
+#    Click Button    ${add_to_cart_button}
+
+#I Should See An Error Message Indicating Valid Quantity
+#    [Tags]    Martin
+#    Wait Until Element Is Visible    id=ticket-quantity-error
+#    ${error_message}    Get Text    id=ticket-quantity-error
+#    Should Contain    ${error_message}    Värdet måste vara större än eller lika med 1.

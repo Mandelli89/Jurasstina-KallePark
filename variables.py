@@ -45,7 +45,7 @@ successful_message = ""
 
 buy_tickets = "id=tickets-nav"
 cart_visible = "id=cart-nav"
-
+cart_details = "css=#cart-details"
 test_variable = "Hello, Robot!"
 
 adult_ticket_type = "Adult"
