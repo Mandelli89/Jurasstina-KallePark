@@ -22,7 +22,7 @@ Feature:
 Det finns biljetter av typerna ”Adult”, ”Child” och ”Senior” samt VIP-biljetter för dubbelt pris.
 
 User Story:  
-
+Som System så vill jag att vip biljetten skall vara dubbelt så dyr som regular biljett.
 
 Acceptanskriterier:
 - Användare skall kunna välja Adult biljett.
@@ -32,9 +32,9 @@ Acceptanskriterier:
 - Användare skall kunna välja VIP biljett.
 - Biljettpriser för VIP skall vara dubbelt än för Regular.
 
-Testfall 1: Adult biljett: Man skall kunna välja vuxen biljett.  
+Testfall 1: Dyrare VIP biljett: VIP biljetten skall vara dubbelt så dyr som regular. 
 Testfall 2: Child biljett: Man skall kunna välja barn biljett.  
 Testfall 3: Senior biljett: Man skall kunna välja senior biljett.  
 Testfall 4: Regular biljett: Man skall kunna välja vanlig biljett oavsett om man har valt vuxen, barn eller senior.  
 Testfall 5: VIP biljett: Man skall kunna välja vip biljett oavsett om man har valt vuxen, barn eller senior.  
-Testfall 6: Dyrare VIP biljett: VIP biljetten skall vara dubbelt så dyr som regular.  
+Testfall 6: Adult biljett: Man skall kunna välja vuxen biljett. 

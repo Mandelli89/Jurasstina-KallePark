@@ -270,11 +270,11 @@ The Price Of The VIP Ticket Should Be Double The Regular Ticket Price
     [Tags]    Martin
     Navigate To Cart Page
     ${regular_text}    Get Text    css=#cart-details li:nth-of-type(1)
-    ${vip_text}    Get Text    css=#cart-details li:nth-of-type(2)
-    ${price_extractor}    Evaluate    PriceExtractor()
-    ${regular_price}    Evaluate    ${price_extractor}.extract_price_regex(${regular_text})
-    ${vip_price}    Evaluate    ${price_extractor}.extract_price_regex(${vip_text})
-    Should Be Equal As Numbers    ${vip_price}    ${regular_price} * 2
+    ${vip_text}        Get Text    css=#cart-details li:nth-of-type(2)
+    ${regular_price}    Extract Price Regex    ${regular_text}
+    ${vip_price}          Extract Price Regex    ${vip_text}
+    ${expected_double_price_for_vip}    Evaluate    ${regular_price} * 2
+    Should Be Equal As Numbers    ${vip_price}    ${expected_double_price_for_vip}
 
 I add One Regular "${ticket_type}" Ticket to the cart
     [Tags]    Martin
@@ -297,7 +297,6 @@ I should see One ${ticket_type} Ticket in the cart
     [Tags]    Martin
     Navigate To Cart Page
     ${cart_text}    Get Text    ${cart_details}
-    Log    Cart text: ${cart_text}
     Should Contain    ${cart_text}    1 ${ticket_type} Ticket(s)
 
 #I Set Ticket Quantity To
