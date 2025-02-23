@@ -299,6 +299,13 @@ I should see One ${ticket_type} Ticket in the cart
     ${cart_text}    Get Text    ${cart_details}
     Should Contain    ${cart_text}    1 ${ticket_type} Ticket(s)
 
+I Add One Regular Ticket Of Each Ticket Type To The Cart
+    [Tags]    Martin
+    I add One Regular "Child" Ticket to the cart
+    I add One Regular "Adult" Ticket to the cart
+    I add One Regular "Senior" Ticket to the cart
+
+
 #I Set Ticket Quantity To
 #    [Tags]    Martin
 #    [Arguments]    ${quantity}

@@ -23,16 +23,14 @@ Remove Ticket from Cart
     When I Remove The Ticket From The Cart
     Then The Cart Should Be Empty
 
-# Cannot Add Less Than One Ticket
+# Cannot Add Negative Amount Of Tickets
     #[Tags]    Martin
-    #[Documentation]    Testing that users can't add less than one ticket to cart.
+    #[Documentation]    Testing that users can't add negative amount of tickets to cart.
     #Given I Have Navigated To Buy Tickets Page When Logged In
-    #When I Set Ticket Quantity To  0
+    #When I Set Ticket Quantity To  -1
     #And I Try To Add To Cart
     #Then I Should See An Error Message Indicating Valid Quantity
 
-# Tanken var att jag skulle testa genom flera tester att det inte gick att skriva in 0 eller negativa tal 
-# som antal biljetter men webbläsaren ger ifrån sig en "tooltip" med felmeddelande som jag inte kan komma åt och testa i koden.
 
 VIP Ticket Costs Double the Regular Ticket
     [Tags]    Martin
@@ -41,6 +39,14 @@ VIP Ticket Costs Double the Regular Ticket
     When I Add 1 Regular Adult Ticket To The Cart
     And I Add 1 VIP Adult Ticket To The Cart
     Then The Price Of The VIP Ticket Should Be Double The Regular Ticket Price
+
+Combine Different Ticket Types To Verify Total Price Calculates Correctly
+    [Tags]    Martin
+    [Documentation]    Testing that the total price is calculated correctly when combining different ticket types.
+    Given I Have Navigated To Buy Tickets Page When Logged In
+    When I Add One Regular Ticket Of Each Ticket Type To The Cart
+    Then The Total Amount Should Be Calculated Correctly
+    And Total Amount Should Be Visible
 
 Buy One Regular Child Ticket
     [Tags]    Martin
