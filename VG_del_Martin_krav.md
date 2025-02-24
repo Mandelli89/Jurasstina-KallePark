@@ -12,12 +12,9 @@ Acceptanskriterier:
 - Användare skall kunna ta bort tillagd biljett från varukorgen.
 - Användare skall inte kunna lägga till negativt antal biljetter.
 
-Testfall 1: Deny Buying Tickets When Not Logged In: Kollar så att man inte skall kunna köpa biljett om man inte är inloggad.  
-Testfall 2: Remove Ticket from Cart: Kollar så att användare kan radera varor från varukorgen.  
-Testfall 3: Cannot Add Negative Amount Of Tickets: Kollar så att man inte kan lägga till minus antal biljetter. 
-
-Testfall 3 fick jag tyvärr överge. Tanken var att jag skulle testa genom flera tester att det inte gick att skriva in 0 eller negativa tal 
-som antal biljetter men webbläsaren ger ifrån sig en "tooltip" med felmeddelande som jag inte kan komma åt och testa i koden.
+Testfall 1: Deny Buying Tickets When Not Logged In: Testar så att man inte skall kunna köpa biljett om man inte är inloggad.  
+Testfall 2: Remove Ticket from Cart: Testar så att användare kan radera varor från varukorgen.  
+Testfall 3: Cannot Add Negative Amount Of Tickets: Testar så att man inte kan lägga till minus antal biljetter. 
  
 ---
 
@@ -26,7 +23,7 @@ Det finns biljetter av typerna ”Adult”, ”Child” och ”Senior” samt VI
 
 User Story:  
 Som System så vill jag att vip biljetten skall vara dubbelt så dyr som regular biljett.
-Som system så vill jag att när olika biljetter läggs till i varukorgen så ska totala priset räknas ut korrekt.
+Som system så vill jag att när olika biljetter läggs till i varukorgen så ska totala priset räknas ut korrekt och priset visas.
 
 Acceptanskriterier:
 - Användare skall kunna välja Adult biljett.

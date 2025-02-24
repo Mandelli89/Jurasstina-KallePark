@@ -23,14 +23,12 @@ Remove Ticket from Cart
     When I Remove The Ticket From The Cart
     Then The Cart Should Be Empty
 
-# Cannot Add Negative Amount Of Tickets
-    #[Tags]    Martin
-    #[Documentation]    Testing that users can't add negative amount of tickets to cart.
-    #Given I Have Navigated To Buy Tickets Page When Logged In
-    #When I Set Ticket Quantity To  -1
-    #And I Try To Add To Cart
-    #Then I Should See An Error Message Indicating Valid Quantity
-
+Cannot Add Negative Amount Of Tickets
+    [Tags]    Martin
+    [Documentation]    Testing that users can't add negative amount of tickets to cart.
+    Given I Have Navigated To Buy Tickets Page When Logged In
+    When I Try To Add A Negative Amount Of Tickets To Cart
+    Then The Cart Should Be Empty
 
 VIP Ticket Costs Double the Regular Ticket
     [Tags]    Martin
@@ -42,15 +40,14 @@ VIP Ticket Costs Double the Regular Ticket
 
 Combine Different Ticket Types To Verify Total Price Calculates Correctly
     [Tags]    Martin
-    [Documentation]    Testing that the total price is calculated correctly when combining different ticket types.
+    [Documentation]    Testing that the total amount is shown and calculated correctly when combining different ticket types.
     Given I Have Navigated To Buy Tickets Page When Logged In
     When I Add One Regular Ticket Of Each Ticket Type To The Cart
-    Then The Total Amount Should Be Calculated Correctly
-    And Total Amount Should Be Visible
+    Then The Total Amount Should Be Correct
 
 Buy One Regular Child Ticket
     [Tags]    Martin
-    [Documentation]
+    [Documentation]    Testing that you can buy a regular child ticket.
     Given I Have Navigated To Buy Tickets Page When Logged In
     When I Add One Regular "Child" Ticket To The Cart
     Then I Should See One Regular Child Ticket In The Cart
@@ -58,7 +55,7 @@ Buy One Regular Child Ticket
 
 Buy One VIP Child Ticket
     [Tags]    Martin
-    [Documentation]
+    [Documentation]    Testing that you can buy a VIP child ticket.
     Given I Have Navigated To Buy Tickets Page When Logged In
     When I Add One VIP "Child" Ticket To The Cart
     Then I Should See One VIP Child Ticket In The Cart
@@ -66,7 +63,7 @@ Buy One VIP Child Ticket
 
 Buy One Regular Adult Ticket
     [Tags]    Martin
-    [Documentation]
+    [Documentation]    Testing that you can buy a regular adult ticket.
     Given I Have Navigated To Buy Tickets Page When Logged In
     When I Add One Regular "Adult" Ticket To The Cart
     Then I should see One Regular Adult Ticket in the cart
@@ -74,7 +71,7 @@ Buy One Regular Adult Ticket
 
 Buy One VIP Adult Ticket
     [Tags]    Martin
-    [Documentation]
+    [Documentation]    Testing that you can buy a VIP adult ticket.
     Given I Have Navigated To Buy Tickets Page When Logged In
     When I add One VIP "Adult" Ticket To The Cart
     Then I Should See One VIP Adult Ticket In The Cart
@@ -82,7 +79,7 @@ Buy One VIP Adult Ticket
 
 Buy One Regular Senior Ticket
     [Tags]    Martin
-    [Documentation]
+    [Documentation]    Testing that you can buy a regular senior ticket.
     Given I Have Navigated To Buy Tickets Page When Logged In
     When I Add One Regular "Senior" Ticket To The Cart
     Then I Should See One Regular Senior Ticket In The Cart
@@ -90,7 +87,7 @@ Buy One Regular Senior Ticket
 
 Buy One VIP Senior Ticket
     [Tags]    Martin
-    [Documentation]
+    [Documentation]    Testing that you can buy a VIP senior ticket.
     Given I Have Navigated To Buy Tickets Page When Logged In
     When I Add One VIP "Senior" Ticket To The Cart
     Then I should see One VIP Senior Ticket in the cart

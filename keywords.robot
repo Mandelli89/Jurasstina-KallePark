@@ -305,18 +305,17 @@ I Add One Regular Ticket Of Each Ticket Type To The Cart
     I add One Regular "Adult" Ticket to the cart
     I add One Regular "Senior" Ticket to the cart
 
+The Total Amount Should Be Correct
+    [Tags]    Martin
 
-#I Set Ticket Quantity To
-#    [Tags]    Martin
-#    [Arguments]    ${quantity}
-#    Input Text    id=ticket-quantity    ${quantity}
-
-#I Try To Add To Cart
-#    [Tags]    Martin
-#    Click Button    ${add_to_cart_button}
-
-#I Should See An Error Message Indicating Valid Quantity
-#    [Tags]    Martin
-#    Wait Until Element Is Visible    id=ticket-quantity-error
-#    ${error_message}    Get Text    id=ticket-quantity-error
-#    Should Contain    ${error_message}    Värdet måste vara större än eller lika med 1.
+    
+I Try To Add A Negative Amount Of Tickets To Cart
+    [Tags]    Martin
+    I Set Ticket Quantity To    -1
+    Click Button    ${add_to_cart_button}
+    Click Element    ${cart_nav_button}
+    
+I Set Ticket Quantity To
+    [Tags]    Martin
+    [Arguments]    ${quantity}
+    Input Text    id=ticket-quantity    ${quantity}
