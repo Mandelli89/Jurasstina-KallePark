@@ -307,8 +307,27 @@ I Add One Regular Ticket Of Each Ticket Type To The Cart
 
 The Total Amount Should Be Correct
     [Tags]    Martin
-
+    Navigate To Cart Page
+    Calculate Total Amount
+    Compare and Show Total Amount
     
+Calculate Total Amount
+    [Tags]    Martin
+    ${adult_text}    Get Text    css=#cart-details li:nth-of-type(1)
+    ${child_text}    Get Text    css=#cart-details li:nth-of-type(2)
+    ${senior_text}    Get Text    css=#cart-details li:nth-of-type(3)
+    ${adult_price}    Extract Price Regex    ${adult_text}
+    ${child_price}    Extract Price Regex    ${child_text}
+    ${senior_price}    Extract Price Regex    ${senior_text}
+    ${expected_total_price}    Evaluate    ${adult_price} + ${child_price} + ${senior_price}
+    Set Suite Variable    ${expected_total_price}
+
+Compare and Show Total Amount
+    [Tags]    Martin
+    ${total_text}    Get Text    css=#cart-total
+    ${total_price}    Extract Price Regex    ${total_text}
+    Should Be Equal As Numbers    ${total_price}    ${expected_total_price}
+
 I Try To Add A Negative Amount Of Tickets To Cart
     [Tags]    Martin
     I Set Ticket Quantity To    -1
