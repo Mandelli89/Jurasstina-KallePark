@@ -23,11 +23,18 @@ Remove Ticket from Cart
     When I Remove The Ticket From The Cart
     Then The Cart Should Be Empty
 
-Cannot Add Negative Amount Of Tickets
+Cannot Add Negative Number Of Tickets
     [Tags]    Martin
     [Documentation]    Testing that users can't add negative amount of tickets to cart.
     Given I Have Navigated To Buy Tickets Page When Logged In
-    When I Try To Add A Negative Amount Of Tickets To Cart
+    When I Try To Add A Negative Number Of Tickets To Cart
+    Then The Cart Should Be Empty
+
+Cannot Add Zero Quantity of Tickets
+    [Tags]    Martin
+    [Documentation]    Testing that users can't add zero tickets to cart.
+    Given I Have Navigated To Buy Tickets Page When Logged In
+    When I Try To Add Zero Tickets To Cart
     Then The Cart Should Be Empty
 
 VIP Ticket Costs Double the Regular Ticket

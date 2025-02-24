@@ -5,7 +5,6 @@ Library    SeleniumLibrary
 Library    Price_Extractor.py
 Variables    variables.py
 
-
 *** Keywords ***
 
 Type In Element
@@ -308,27 +307,27 @@ I Add One Regular Ticket Of Each Ticket Type To The Cart
 The Total Amount Should Be Correct
     [Tags]    Martin
     Navigate To Cart Page
-    Calculate Total Amount
-    Compare and Show Total Amount
+    Calculate And Compare Total Amount
+    Total Amount Is Visible
     
-Calculate Total Amount
+Calculate And Compare Total Amount
     [Tags]    Martin
     ${adult_text}    Get Text    css=#cart-details li:nth-of-type(1)
     ${child_text}    Get Text    css=#cart-details li:nth-of-type(2)
     ${senior_text}    Get Text    css=#cart-details li:nth-of-type(3)
+    ${total_text}    Get Text    css=#cart-total
     ${adult_price}    Extract Price Regex    ${adult_text}
     ${child_price}    Extract Price Regex    ${child_text}
     ${senior_price}    Extract Price Regex    ${senior_text}
-    ${expected_total_price}    Evaluate    ${adult_price} + ${child_price} + ${senior_price}
-    Set Suite Variable    ${expected_total_price}
-
-Compare and Show Total Amount
-    [Tags]    Martin
-    ${total_text}    Get Text    css=#cart-total
     ${total_price}    Extract Price Regex    ${total_text}
+    ${expected_total_price}    Evaluate    ${adult_price} + ${child_price} + ${senior_price}
     Should Be Equal As Numbers    ${total_price}    ${expected_total_price}
 
-I Try To Add A Negative Amount Of Tickets To Cart
+Total Amount Is Visible
+    [Tags]    Martin
+    Element Should Be Visible    css=#cart-total
+
+I Try To Add A Negative Number Of Tickets To Cart
     [Tags]    Martin
     I Set Ticket Quantity To    -1
     Click Button    ${add_to_cart_button}
@@ -338,3 +337,9 @@ I Set Ticket Quantity To
     [Tags]    Martin
     [Arguments]    ${quantity}
     Input Text    id=ticket-quantity    ${quantity}
+
+I Try To Add Zero Tickets To Cart
+    [Tags]    Martin
+    I Set Ticket Quantity To    0
+    Click Button    ${add_to_cart_button}
+    Click Element    ${cart_nav_button}
