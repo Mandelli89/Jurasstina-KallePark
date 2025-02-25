@@ -22,15 +22,30 @@ register_button = "//*[@id='register-form']/button"
 add_to_cart_button = "//*[@id='ticket-form']/button"
 cart_nav_button = "id=cart-nav"
 proceed_to_checkout_button = "id=checkout-button"
+Register_link = '//*[@id="register-nav"]/a'
 remove_button = "css=button[onclick^='removeFromCart']"
 
 safari_cart_button = "//*[@id='safari-form']/button"
+login_Section = "id=login-section"
+loginlink_element = '//*[@id="login-nav"]/a'
+home_section = "id=home-section"
+ticket_quantity = "id=ticket-quantity"
+ticket_category_selector = "id=ticket-category"
+ticket_option = "Regular"
+Ticket_type_selector = "id=ticket-type"
+ticket_type = "Adult"
+Ticketlink_element = '//*[@id="tickets-nav"]/a'
+
 
 invalid_username = "qwerty1234"
 invalid_passwords = ["", "asdf123", "åäö"]
 
 valid_username = "KimMedFamiljen"
 valid_password = "Familj123"
+
+valid_username2 = "Stina-Palle"
+valid_password2 = "Stina4251!"
+
 
 error_message_element_safari = "//*[@id='safari-message']"
 error_message_element = "id=login-message"
@@ -39,9 +54,10 @@ error_message = "Invalid username or password"
 error_message_register_element = "id=register-message"
 error_message_register = "Username already exists. Please choose another."
 error_message_password_register = "Password must be at least 8 characters long."
+successful_message_element = "id=register-message"
+successful_message = "Registration successful! Redirecting to login..."
 
-successful_message_element = ""
-successful_message = ""
+
 
 buy_tickets = "id=tickets-nav"
 cart_visible = "id=cart-nav"
@@ -62,7 +78,7 @@ expected_ticket_quantity = ""
 
 safari_dates_category = "id=safari-date"
 safari_weekend_date = "002025-04-19"
-safari_weekday_date = "002025-02-19"
+safari_weekday_date = "002025-05-20"
 
 safari_type_category = "id=safari-type"
 herbivore_feeding_tour = "Herbivore Tour with Feeding"
@@ -75,5 +91,10 @@ alert_cart_message = "Item added to cart!"
 safari_weekend_denied_message = "VIP tickets required to book safaris on weekends."
 safari_vip_booking_denied_message = "Only VIP users can book the selected safari option."
 
+safari_type_category = "id=safari-type"
+safari_type = "Herbivore Tour"
+safari_nav = "id=safari-nav"
+safari_dates_category = "id=safari-date"
+safari_date = "27022025"
 denied_buying_ticket_message = "You must be logged in to purchase tickets."
 empty_cart_message = "Your cart is empty."
